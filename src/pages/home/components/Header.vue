@@ -5,11 +5,14 @@
     </div>
     <div class="header-input">
       <span class="iconfont">&#xe632;</span>
-      输入城市/景点/游玩主题</div>
-    <div class="header-right">
-      {{ city }}
-      <span class="iconfont arrow-icon">&#xe64a;</span>
+      输入城市/景点/游玩主题
     </div>
+    <router-link to="/city">
+      <div class="header-right" >
+        {{ city }}
+        <span class="iconfont arrow-icon">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
@@ -17,6 +20,8 @@ export default {
   name: 'HomeHeader',
   props: {
     city: String
+  },
+  methods: {
   }
 }
 </script>
@@ -48,6 +53,7 @@ export default {
       width: 1.24rem
       float: right
       text-align: center
+      color #fff
       .arrow-icon
         font-size .24rem
         margin-left -.04rem
