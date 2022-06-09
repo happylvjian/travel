@@ -2,7 +2,7 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item in recommendedList " :key="item.id">
+      <li class="item border-bottom" v-for="item in list " :key="item.id">
         <img class="item-img" :src="item.imgUrl" />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -16,28 +16,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      recommendedList: [
-        {
-          id: '0001',
-          imgUrl: 'https://tr-osdcp.qunarzz.com/tr-osd-tr-space/img/45a4e09567253f0051fa23c0ea9215d1.jpg_640x480x70_65b36d72.jpg',
-          title: '大连圣亚海洋世界',
-          desc: '浪漫大连首站，狼浪漫的海洋主题乐园'
-        },
-        {
-          id: '0002',
-          imgUrl: 'https://tr-osdcp.qunarzz.com/tr-osd-tr-space/img/45a4e09567253f0051fa23c0ea9215d1.jpg_640x480x70_65b36d72.jpg',
-          title: '大连圣亚海洋世界',
-          desc: '浪漫大连首站，狼浪漫的海洋主题乐园'
-        },
-        {
-          id: '0003',
-          imgUrl: 'https://tr-osdcp.qunarzz.com/tr-osd-tr-space/img/45a4e09567253f0051fa23c0ea9215d1.jpg_640x480x70_65b36d72.jpg',
-          title: '大连圣亚海洋世界',
-          desc: '浪漫大连首站，狼浪漫的海洋主题乐园'
-        }
-      ]
     }
   }
 }
