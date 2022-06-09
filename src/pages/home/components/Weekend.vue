@@ -30,7 +30,7 @@ export default {
 @import "~%styles/mixins.styl"
 .title
   line-height .8rem
-  font-size .32remS
+  font-size .32rem
   background #eee
   text-indent .2rem
 .item-img-wrapper
