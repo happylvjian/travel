@@ -8,6 +8,8 @@
 export default {
   name: 'City',
   data () {
+    return {
+    }
   },
   methods: {
     goBack () {
