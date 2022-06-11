@@ -21,5 +21,8 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  beforeCreate () {
+    Vue.prototype.$bus = this
+  }
 })

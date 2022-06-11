@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item, key) of cities" :key="key">
+      <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{ key }}</div>
         <div class="item-list">
           <div
@@ -42,13 +42,32 @@ export default {
     hotCities: Array,
     cities: Object
   },
+  watch: {
+    letter () {
+      if (this.letter) {
+        console.log(this.letter)
+        console.log(this.bScroll)
+        this.bScroll.scrollToElement(this.$refs[this.letter][0])
+      }
+    }
+  },
   data () {
     return {
-      bScroll: undefined
+      bScroll: undefined,
+      letter: ''
     }
   },
   mounted () {
-    this.bScroll = new BetterScroll(this.$refs.wrapper)
+    setTimeout(() => {
+      this.bScroll = new BetterScroll(this.$refs.wrapper)
+    }, 80)
+    this.$bus.$on('change-letter', (data) => {
+      console.log('change-letter')
+      this.letter = data
+    })
+  },
+  beforeDestroy () {
+    this.$bus.$off('change-letter')
   }
 }
 </script>
