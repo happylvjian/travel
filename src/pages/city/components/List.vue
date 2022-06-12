@@ -45,10 +45,13 @@ export default {
   watch: {
     letter () {
       if (this.letter) {
-        console.log(this.letter)
-        console.log(this.bScroll)
         this.bScroll.scrollToElement(this.$refs[this.letter][0])
       }
+    },
+    cities () {
+      this.$nextTick(() => {
+        this.bScroll.refresh()
+      })
     }
   },
   data () {
@@ -58,11 +61,8 @@ export default {
     }
   },
   mounted () {
-    setTimeout(() => {
-      this.bScroll = new BetterScroll(this.$refs.wrapper)
-    }, 80)
+    this.bScroll = new BetterScroll(this.$refs.wrapper)
     this.$bus.$on('change-letter', (data) => {
-      console.log('change-letter')
       this.letter = data
     })
   },
