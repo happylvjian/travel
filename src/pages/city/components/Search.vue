@@ -5,7 +5,13 @@
     </div>
     <div class="search-content" v-show="keyword.length" ref="listWrapper">
       <ul>
-        <li class="search-item" border-bottom v-for="item of list" :key="item.id">{{item.name}}</li>
+        <li
+          class="search-item"
+          border-bottom
+          v-for="item of list"
+          :key="item.id"
+          @click="handleCityClick(item.name)"
+        >{{item.name}}</li>
       </ul>
     </div>
   </div>
@@ -59,6 +65,13 @@ export default {
   },
   updated () {
 
+  },
+  methods: {
+    handleCityClick (city) {
+      this.$store.commit('changeCity', city)
+      this.keyword = ''
+      this.$router.back()
+    }
   }
 }
 </script>

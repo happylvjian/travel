@@ -5,14 +5,18 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{ $store.state.city }}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+          <div class="button-wrapper"
+               v-for="item of hotCities"
+               :key="item.id"
+               @click="handleCityClick(item.name)"
+          >
             <div class="button">{{ item.name }}</div>
           </div>
         </div>
@@ -24,6 +28,7 @@
             class="item border-topbottom"
             v-for="innerItem of item"
             :key="innerItem.id"
+            @click="handleCityClick(innerItem.name)"
           >
             {{ innerItem.name }}
           </div>
@@ -61,13 +66,19 @@ export default {
     }
   },
   mounted () {
-    this.bScroll = new BetterScroll(this.$refs.wrapper)
+    this.bScroll = new BetterScroll(this.$refs.wrapper, {click: true})
     this.$bus.$on('change-letter', (data) => {
       this.letter = data
     })
   },
   beforeDestroy () {
     this.$bus.$off('change-letter')
+  },
+  methods: {
+    handleCityClick (city) {
+      this.$store.commit('changeCity', city)
+      this.$router.back()
+    }
   }
 }
 </script>
@@ -102,6 +113,8 @@ export default {
   float left
   width 33.33%
   .button
+    height 0.3rem
+    line-height 0.3rem
     margin .1rem
     padding .1rem 0
     text-align center
