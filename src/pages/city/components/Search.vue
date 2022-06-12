@@ -18,6 +18,7 @@
 </template>
 <script>
 import BetterScroll from 'better-scroll'
+import {mapMutations} from 'vuex'
 export default {
   name: 'CitySearch',
   components: {
@@ -67,8 +68,9 @@ export default {
 
   },
   methods: {
+    ...mapMutations(['changeCity']),
     handleCityClick (city) {
-      this.$store.commit('changeCity', city)
+      this.changeCity(city)
       this.keyword = ''
       this.$router.back()
     }
