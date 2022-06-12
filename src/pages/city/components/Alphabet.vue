@@ -68,7 +68,7 @@ export default {
             touchLetterIdx = 0
           }
           this.touchLetter = this.letters[touchLetterIdx]
-        }, 16)
+        }, 8)
       }
     },
     handleTouchEnd (key) {
