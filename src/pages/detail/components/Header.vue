@@ -28,11 +28,10 @@ export default {
       }
     }
   },
-  mounted () {
+  activated () {
     window.addEventListener('scroll', this.handleScroll)
-    console.log('mounted')
   },
-  destroyed () {
+  deactivated () {
     window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
