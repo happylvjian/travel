@@ -13,7 +13,7 @@
       v-show="!showAbs"
     >
       <div class="iconfont fixed-back-icon" @click="goBack">&#xe624;</div>
-      经典详情
+      景点详情
     </div>
   </div>
 </template>
