@@ -69,6 +69,7 @@ $headerHeight = .86rem
     color #fff
     font-size .4rem
 .header-fixed
+  z-index 2
   overflow hidden
   position fixed
   top 0
